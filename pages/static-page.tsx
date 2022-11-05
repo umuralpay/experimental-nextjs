@@ -1,13 +1,8 @@
 function StaticPage() {
-
-}
-
-export async function getStaticPaths() {
-
-}
-
-export async function getStaticProps() {
-    
+    return <div></div>
 }
 
 export default StaticPage;
+export async function getStaticProps() {
+    return {props: {}};
+}
