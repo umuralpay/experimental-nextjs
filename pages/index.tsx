@@ -1,11 +1,22 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from "axios";
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
 
   const [num, setNum] = useState<number>(0);
+  const [userData, setUserData] = useState(null)
+  const [username, setUsername] = useState('umuralpay')
+
+  useEffect(() => {
+    axios.post('/login', {
+      username
+    })
+      // Update the state with the received response
+      .then((response) => { setUserData(response.data.username)})
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -18,6 +29,9 @@ export default function Home() {
         <Image src={"/vercel.svg"} width="283" height="64" alt="logo" />
         <button onClick={() => setNum(num+1)}>Click me</button>
         <p title="num">{num}</p>
+      </div>
+      <div data-testid="selam">
+        {userData}
       </div>
     </div>
   )
