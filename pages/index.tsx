@@ -1,8 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+
+  const [num, setNum] = useState<number>(0);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,6 +16,8 @@ export default function Home() {
       </Head>
       <div className={styles.main}>
         <Image src={"/vercel.svg"} width="283" height="64" alt="logo" />
+        <button onClick={() => setNum(num+1)}>Click me</button>
+        <p title="num">{num}</p>
       </div>
     </div>
   )
